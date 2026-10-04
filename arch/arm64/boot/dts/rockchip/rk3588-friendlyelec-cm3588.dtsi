@@ -684,6 +684,14 @@
 };
 
 &tsadc {
+	/*
+	 * TSADC_SHUT (GPIO0_A1) is tied to RESET_L, which a carrier reset
+	 * button pulls low through 100R. Driving the pin as TSADC_SHUT holds
+	 * RESET_L high, so keep it a GPIO; tshut resets via the CRU.
+	 */
+	pinctrl-0 = <&tsadc_gpio_func>;
+	pinctrl-names = "default";
+
 	status = "okay";
 };
 
